@@ -1,0 +1,128 @@
+<TaskPanel>
+    name:'taskpanel'
+    BoxLayout:
+        canvas:
+            Color:
+                rgba:1,1,1,1
+            Rectangle:
+                pos:self.pos
+                size:self.size
+
+        orientation:'vertical'
+
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint_y:None
+            height:60
+            canvas:
+                Color:
+                    rgba:0.7,0.7,0.7,1
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            Menubt:
+
+            RadialLb:
+                color:'black'
+                text:'Mural'
+                bold:True
+                font_size:30
+        ScrollView:
+            Box:
+                id:task
+                orientation:'vertical'
+                size_hint_y:None
+                height:self.minimum_height
+        BoxLayout:
+            size_hint_y:None
+            height:60
+            TextInput:
+                id:text_input
+                font_size:30
+            Btt:
+                text:'Add'
+                color:'black'
+                size_hint_x:None
+                width:60
+                on_release:root.addWidget()
+
+
+<Btt@ButtonBehavior+Label>:
+    canvas.before:
+        Color:
+            rgba:0.8,0.8,0.8,1
+        Rectangle:
+            size:self.size
+            pos:self.pos
+
+<Tasks>
+    padding:20
+    spacing:10
+    size_hint_y:None
+    RadialLb:
+        id:label
+        color:'black'
+        bold:True
+    CircularBt:
+        id:circularbt
+        text:'X'
+        color:'black'
+        size_hint_x:None
+        size_hint_y:None
+        height:50
+        width:50
+        on_release:app.root.RemoveWidget(root)
+
+
+<RadialLb@Label>:
+    canvas.before:
+        Color:
+            rgba:0.8,0.8,0.8,1
+        Ellipse:
+            pos:self.pos
+            size:self.height,self.height
+        Ellipse:
+            pos: self.x+self.width-self.height,self.y
+            size: self.height,self.height
+        Rectangle:
+            pos:self.x+self.height/2.0,self.y
+            size:self.width-self.height,self.height
+
+<Menubt@ButtonBehavior+Label>:
+    canvas:
+        Color:
+            rgba:0.3,0.3,0.3,0.7
+        Ellipse:
+            size:30,30
+            pos:self.x+10,self.y+15
+        Ellipse:
+            size:30,30
+            pos:self.x+50,self.y+15
+        Ellipse:
+            size:30,30
+            pos:self.x+90,self.y+15
+
+
+<CircularBt@ButtonBehavior+Label>
+    canvas.before:
+        Color:
+            rgba:0.7,0.7,0.7,1
+        Ellipse:
+            size:self.size
+            pos:self.x,self.y
+
+<Bt@ButtonBehavior+Label>:
+    font_size:20
+    color:'black'
+    canvas.before:
+        Color:
+            rgba:0.8,0.8,0.8,0.8
+        Ellipse:
+            pos:self.pos
+            size:self.height,self.height
+        Ellipse:
+            pos: self.x+self.width-self.height,self.y
+            size: self.height,self.height
+        Rectangle:
+            pos:self.x+self.height/2.0,self.y
+            size:self.width-self.height,self.height
